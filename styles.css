@@ -1,6 +1,7 @@
 /* ========================================
    ERICK ROMO INMOBILIARIA - DORADO LUXURY
 ======================================== */
+
 :root {
     /* Colores LOGO DORADO/NEGRO */
     --dorado-primario: #D4AF37;
@@ -12,31 +13,32 @@
     --gris-claro: #F5F5F5;
     --crema-suave: #FAF7F0;
     --blanco-puro: #FFFFFF;
-    
+
     /* Sombras y efectos */
     --shadow-dorado: rgba(212, 175, 55, 0.3);
     --shadow-negro: rgba(26, 26, 26, 0.15);
     --border-dorado: rgba(212, 175, 55, 0.2);
-    
+
     /* Transiciones elegantes */
     --transition-suave: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     --radius-elegante: 20px;
 }
-body {
-        max-width: 100%;
-    overflow-x: hidden;
-}
 
-img, video, iframe {
-    max-width: 100%;
-    height: auto;
-}
-section, div {
+/* ========================================
+   RESET Y BASE (CORREGIDO)
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
-/* Reset y Base */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+
+html {
+    scroll-behavior: smooth;
+    max-width: 100%;
+    overflow-x: hidden;
+}
 
 body {
     font-family: 'Poppins', sans-serif;
@@ -44,12 +46,30 @@ body {
     color: var(--negro-primario);
     line-height: 1.7;
     padding-top: 0;
+
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
+/* TIPOGRAFÍA */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
     font-weight: 600;
     color: var(--negro-primario);
+}
+
+/* ========================================
+   MEDIA GLOBAL FIX
+======================================== */
+
+img, video, iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+/* seguridad extra para evitar overflow */
+section, div {
+    box-sizing: border-box;
 }
 
 /* ==========================
@@ -921,196 +941,76 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateX(5px);
 }
 
-/* WHATSAPP LUXURY */
+/* =========================
+   WHATSAPP LUXURY (FIX FINAL)
+========================= */
+
 .whatsapp-luxury {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 75px;
-    height: 75px;
+    bottom: 25px;
+    right: 25px;
+
+    width: 70px;
+    height: 70px;
+
     background: linear-gradient(135deg, var(--dorado-primario), var(--dorado-oscuro));
     border-radius: 50%;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.2rem;
+
+    font-size: 2rem;
     color: var(--negro-primario);
+
     box-shadow: 0 20px 50px var(--shadow-dorado);
-    z-index: 999;
-    transition: all var(--transition-suave);
+
+    z-index: 999999; /* suficientemente alto */
+
+    transition: transform var(--transition-suave);
+
     animation: pulse-dorado 2s infinite;
 }
 
-.whatsapp-luxury:hover { transform: scale(1.2); }
-
-
-.whatsapp-luxury {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 999999;
-
-    transform: none;
-    max-width: 60px;
-    max-height: 60px;
+/* Hover solo desktop */
+.whatsapp-luxury:hover {
+    transform: scale(1.15);
 }
 
+/* Animación */
 @keyframes pulse-dorado {
     0% { box-shadow: 0 0 0 0 var(--shadow-dorado); }
-    70% { box-shadow: 0 0 0 25px rgba(212, 175, 55, 0); }
+    70% { box-shadow: 0 0 0 20px rgba(212, 175, 55, 0); }
     100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
 }
 
-/* CAROUSEL */
-.carousel-control-prev, .carousel-control-next {
-    width: 70px;
-    height: 70px;
-    background: rgba(212, 175, 55, 0.9);
-    border-radius: 50%;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: all var(--transition-suave);
-}
-
-.carousel-control-prev:hover, .carousel-control-next:hover {
-    background: var(--dorado-primario);
-    transform: translateY(-50%) scale(1.1);
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    .hero-title { font-size: 2.8rem; }
-    .hero-price { font-size: 2.5rem; }
-    .section-title { font-size: 2.2rem; }
-    .whatsapp-luxury { width: 65px; height: 65px; font-size: 1.8rem; }
-    .property-img { height: 220px; }
-}
-/* ========================================
-   MOBILE HOVER FIX - ERICK ROMO LUXURY
-======================================== */
-@media (hover: none) and (pointer: coarse) {
-
-    /* ===== CARDS LUXURY ===== */
-    .card-luxury:active {
-        transform: translateY(-20px);
-        box-shadow: 0 40px 90px var(--shadow-dorado);
-    }
-
-    .card-luxury:active::before {
-        transform: scaleX(1);
-    }
-
-    .card-luxury:active .icono-dorado {
-        transform: scale(1.15) rotate(360deg);
-    }
-
-    /* ===== PROPIEDADES ===== */
-    .property-card:active {
-        transform: translateY(-15px);
-        box-shadow: 0 30px 70px var(--shadow-dorado);
-    }
-
-    .property-card:active .property-img {
-        transform: scale(1.1);
-    }
-
-    /* ===== BOTONES ===== */
-    .btn-dorado:active {
-        transform: translateY(-8px) scale(1.05);
-        box-shadow: 0 25px 50px var(--shadow-dorado);
-    }
-
-    /* ===== NAV LINKS ===== */
-    .navbar-nav .nav-link:active {
-        color: #ffd700 !important;
-        background: rgba(255,215,0,0.1);
-        transform: translateY(-1px);
-    }
-
-    /* ===== WHATSAPP ===== */
-    .whatsapp-luxury:active {
-        transform: scale(1.2);
-    }
-}
-@media (hover: none) and (pointer: coarse) {
-    .hover-list li:active {
-        background: rgba(255, 215, 0, 0.1);
-        border-radius: 8px;
-        transform: translateX(5px);
-    }
-
-    .hover-list li:active i {
-        color: var(--dorado-oscuro);
-        transform: scale(1.2);
-    }
-}
-* {
-    -webkit-tap-highlight-color: transparent;
-}
-
-
-/* ========================================
-   FIX MOBILE - CATÁLOGO PROPIEDADES
-======================================== */
-@media (max-width: 768px) {
-
-    /* CONTENEDOR GENERAL */
-    .catalogo-luxury {
-        padding: 3rem 0;
-    }
-
-    /* TARJETA */
-    .card-propiedad {
-        border-radius: 16px;
-    }
-
-    /* IMAGEN MÁS PROPORCIONAL */
-    .img-container {
-        height: 200px; /* antes 260px */
-    }
-
-    /* PRECIO MÁS COMPACTO */
-    .precio {
-        font-size: 0.9rem;
-        padding: 0.4rem 1rem;
-        bottom: 10px;
-        left: 10px;
-    }
-
-    /* CONTENIDO */
-    .contenido {
-        padding: 1.2rem;
-    }
-
-    .contenido h5 {
-        font-size: 1.1rem;
-    }
-
-    .contenido p {
-        font-size: 0.9rem;
-        margin-bottom: 1rem;
-    }
-
-    /* BOTÓN */
-    .btn-propiedad {
-        padding: 0.7rem;
-        font-size: 0.9rem;
-    }
-
-    /* ESPACIADO ENTRE CARDS */
-    .row.g-4 {
-        gap: 1rem 0;
-    }
-}
-
+/* =========================
+   FIX MOBILE (IMPORTANTE)
+========================= */
 
 @media (max-width: 768px) {
+
     .whatsapp-luxury {
+        width: 58px;
+        height: 58px;
+
         right: 15px;
         bottom: 15px;
-        width: 60px;
-        height: 60px;
+
         font-size: 1.6rem;
-        z-index: 999999;
+
+        z-index: 9999999;
+
+        /* evita glitches táctiles */
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
     }
+}
+
+/* =========================
+   EVITAR TOQUES RAROS MOBILE
+========================= */
+
+* {
+    -webkit-tap-highlight-color: transparent;
 }
